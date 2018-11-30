@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
 * Klassen Medlemskab har ansvar for at haandtere funktioner knyttet til medlemmer,
@@ -82,6 +83,9 @@ public class Medlemskab
       Medlem medlem = new Medlem();
       
       medlem.setMedlemsnummer(hentNytMedlemsnummer());
+      
+      medlem.setOprettelsesdato(LocalDate.now());
+      
       System.out.println("Indtast fornavn");
       String fornavn = input.nextLine();
       medlem.setFornavn(fornavn);
@@ -90,9 +94,35 @@ public class Medlemskab
       String efternavn = input.nextLine();
       medlem.setEfternavn(efternavn);  
       
+      
+      boolean foedselsdatoKorrekt = false;
+      while (!foedselsdatoKorrekt)
+      {
+         try
+         {
+            System.out.println("Indtast foedselsdato (aaaa-mm-dd):");
+            String fdato = input.nextLine();
+            medlem.setFoedselsdato(LocalDate.parse(fdato));
+            foedselsdatoKorrekt = true;
+         } 
+         catch (Exception e)
+         {
+            System.out.println("Noget gik galt. Prøv igen.");
+         }
+      }
+      
+      long alderIAAr = ChronoUnit.YEARS.between(medlem.getFoedselsdato(), LocalDate.now());
+      if (alderIAAr < 18)
+      {
+      
       System.out.println("Indtast cpr.nummer");
       String cpr = input.nextLine();
-      medlem.setCprNummer(cpr); 
+      medlem.setCprNummer(cpr);
+      }
+      else
+      {
+         medlem.setCprNummer("\\N");
+      } 
       
       System.out.println("Indtast 0 for hyggespiller eller 1 for turneringsspiller");
       while(!input.hasNextInt())//i tilfaelde af at brugeren ikke skriver et tal
@@ -134,25 +164,31 @@ public class Medlemskab
             System.out.println("Vaelg 0 eller 1");
          }
          
+         String dummy = input.nextLine();
+         
          System.out.println("Indtast telefonnummer");
          String tlf = input.nextLine();
          medlem.getKontakt().setTelefonnummer(tlf);
          
          System.out.println("Indtast gadenavn");
          String gade = input.nextLine();
-         medlem.getKontakt().setTelefonnummer(gade);     
+         medlem.getKontakt().setGadenavn(gade);     
          
          System.out.println("Indtast husnummer");
          String hus = input.nextLine();
-         medlem.getKontakt().setTelefonnummer(hus);      
+         medlem.getKontakt().setHusnummer(hus);      
          
          System.out.println("Indtast postnummer");
          String post = input.nextLine();
-         medlem.getKontakt().setTelefonnummer(post);     
+         medlem.getKontakt().setPostnummer(post);     
          
          System.out.println("Indtast by");
          String by = input.nextLine();
-         medlem.getKontakt().setTelefonnummer(by);     
+         medlem.getKontakt().setBy(by);
+         
+         System.out.println("Indtast email");
+         String email = input.nextLine();
+         medlem.getKontakt().setEmail(email);     
 
          Filhaandtering.gemNytMedlem(medlem, medlem.getCprNummer());   
 

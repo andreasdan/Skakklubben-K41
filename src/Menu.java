@@ -37,14 +37,14 @@ public class Menu
          visHovedmenu();
          while(!console.hasNextInt()) //i tilfaelde af at brugeren ikke skriver et tal
          {
-            System.out.println("V�lg et tal mellem 0-2");
+            System.out.println("Vaelg et tal mellem 0-2");
          }
          
          int valg = console.nextInt();
          
          if(valg < 0 || valg > 2) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-2
          {
-            System.out.println("V�lg et tal mellem 0-2");
+            System.out.println("Vaelg et tal mellem 0-2");
          }
          
          
@@ -66,7 +66,7 @@ public class Menu
          
             int valg1 = console.nextInt();
          
-            if(valg1 < 0 || valg1 > 2) //i tilfaelde af at brugeren ikke v�lger et tal mellem 0-2
+            if(valg1 < 0 || valg1 > 2) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-2
             {
                System.out.println("Vaelg et tal mellem 0-2");
             }

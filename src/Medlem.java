@@ -74,7 +74,7 @@ public class Medlem
    
      public void setFoedselsdato(LocalDate foedselsdato)
    {
-      this.oprettelsesdato = oprettelsesdato;
+      this.foedselsdato = foedselsdato;
    }
    
    public LocalDate getOprettelsesdato()
@@ -84,7 +84,7 @@ public class Medlem
    
       public LocalDate getFoedselsdato()
    {
-      return this.oprettelsesdato;
+      return this.foedselsdato;
    }
    
    public void setCprNummer(String cprNummer)
@@ -127,6 +127,7 @@ public class Medlem
       return "Navn: " + getFornavn() + " " + getEfternavn();
    }
    
+   //True = 1 og False = 0, konvertere boolean om til int til filskrivning
    private int konverterBoolean(boolean bool)
    {
       if (bool)
@@ -162,7 +163,7 @@ public class Medlem
 /**
 * tilFil genererer en string med oplysninger paa et medlem.
 *
-* @return String  returnerer oplysninger paa et medlem.
+* @return String  returnerer oplysninger paa et medlem. foedselsdato = LocalDate.parse("1998-14-03")
 */
    
    public String tilFil()
@@ -180,8 +181,24 @@ public class Medlem
       }
       
       int turneringsspiller = konverterBoolean(erTurneringsspiller);
+      int spillerErAktiv = konverterBoolean(erAktiv);
       
-      String resultat = medlemsnummer + "\t" + fornavn + "\t" + efternavn + "\t" + oprettelsesdato.toString() + "\t" + kontakt.getGadenavn() + "\t" + kontakt.getPostnummer() + "\t" + kontakt.getHusnummer() + "\t" + kontakt.getBy() + "\t" + foedselsdato.toString() + "\t" + kontingenttype + "\t" + kontakt.getEmail() + "\t" + kontakt.getTelefonnummer() + "\t" + turneringsspiller + "\t" + "1" + "\t" + "1";     
+      String resultat =
+      medlemsnummer + "\t"
+      + fornavn + "\t"
+      + efternavn + "\t"
+      + oprettelsesdato.toString() + "\t"
+      + kontakt.getGadenavn() + "\t"
+      + kontakt.getPostnummer() + "\t"
+      + kontakt.getHusnummer() + "\t"
+      + kontakt.getBy() + "\t"
+      + foedselsdato.toString() + "\t"
+      + kontingenttype + "\t"
+      + kontakt.getEmail() + "\t"
+      + kontakt.getTelefonnummer() + "\t"
+      + turneringsspiller + "\t"
+      + "0" + "\t" //harBetalt er altid 0 fordi der først skal faktureres osv.
+      + spillerErAktiv;     
       
       return resultat;
    }
