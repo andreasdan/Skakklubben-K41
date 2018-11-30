@@ -154,7 +154,7 @@ public class Medlemskab
          String by = input.nextLine();
          medlem.getKontakt().setTelefonnummer(by);     
 
-         Filhaandtering.gemNytMedlem(medlem);   
+         Filhaandtering.gemNytMedlem(medlem, medlem.getCprNummer());   
 
    }
 /**
