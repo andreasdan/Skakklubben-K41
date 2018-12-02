@@ -270,7 +270,7 @@ public final class Filhaandtering
 	{
       try
       {
-         File file = new File(medlemsFilnavn);
+         File file = new File(denSorteListe);
          
          if (!file.canRead())
          {
@@ -299,5 +299,46 @@ public final class Filhaandtering
       
       return false;
 	}
+
+   public static void laesRestanceListe()
+   {
+      try
+      {
+         File file = new File(medlemsFilnavn);
+         
+         if (!file.canRead())
+         {
+            System.out.println("Filen kunne ikke laeses. Vi kan ikke udprinte restanceListe.");
+         }
+         
+         Scanner scanner = new Scanner(file);
+         String[] linje;
+         
+         File restanceListe = new File("RestanceListe");
+         PrintStream tilFil = new PrintStream(restanceListe);
+         int medlemsnr = 0;
+         String fornavn1 = "";
+         String efternavn1 = "";
+         
+         while (scanner.hasNextLine())
+         {
+            linje = scanner.nextLine().split("\t");
+
+            if (linje[13].equals("0"))
+            {
+                  medlemsnr = Integer.parseInt(linje[0]);
+                  fornavn1 = linje[2];
+                  efternavn1 = linje[3];
+                  tilFil.println(medlemsnr + "\t" + fornavn1 + "\t" + efternavn1);
+             } 
+           }
+        System.out.println("Hvis der er medlemmer i restance, har vi udprintet en restanceliste.\n");
+        }
+      catch (IOException e)
+      {
+         System.out.println(e);
+      }  
+	}
+
 
 }
