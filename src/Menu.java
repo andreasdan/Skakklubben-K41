@@ -131,7 +131,7 @@ public class Menu
             
             if(valg2 == 2)
             {
-               kontingent.visRestanceliste();
+               Filhaandtering.laesRestanceListe();
             }
 
             
