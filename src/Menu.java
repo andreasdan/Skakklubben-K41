@@ -103,7 +103,6 @@ public class Menu
          
          if(valg == 2)
          {
-            Kontingenthaandtering kontingent = new Kontingenthaandtering();
             
             visKontingenthaandteringMenu();
             while(!console.hasNextInt()) //i tilfaelde af at brugeren ikke skriver et tal
@@ -126,7 +125,11 @@ public class Menu
             
             if(valg2 == 1)
             {
-               kontingent.hentPriser();
+               String[] priser = Filhaandtering.laesPriser();
+               for (String pris : priser)
+               {
+                  System.out.println(pris);
+               } 
             }
             
             if(valg2 == 2)

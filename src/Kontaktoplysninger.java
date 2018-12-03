@@ -30,12 +30,12 @@ public class Kontaktoplysninger
    */
    public Kontaktoplysninger()
    {
-      /*this.telefonnummer = "";
+      this.telefonnummer = "";
       this.gadenavn = "";
       this.husnummer = "";
       this.postnummer = "";
       this.by = "";
-      this.email = "";*/
+      this.email = "";
    }
    
    /** Det er klassens konstruktor

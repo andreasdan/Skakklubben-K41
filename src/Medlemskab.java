@@ -217,6 +217,7 @@ public class Medlemskab
          }
          
          int valg = console.nextInt();
+         String dummy = console.nextLine();
          
          if(valg < 0 || valg > 4) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-4
          {

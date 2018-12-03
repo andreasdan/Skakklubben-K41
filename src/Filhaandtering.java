@@ -39,25 +39,33 @@ public final class Filhaandtering
                pris = scanner.nextInt();
                if (pris == 0)
                {
-                  type = "Junior";
+                  type = "Junior\t\t";
+                  priser[i] = type + ": " + scanner.nextLine() + " kr.";
                }
                else if (pris == 1)
                {
-                  type = "Senior";
+                  int seniorPris = Integer.parseInt(scanner.nextLine().replace("\t", ""));
+               
+                  type = "Senior\t\t";
+                  priser[i] = type + ": " + "\t" + seniorPris + " kr.";
+                  
+                  i++;
+                  type = "Senior60+\t";
+                  priser[i] = type + ": " + "\t" + (seniorPris * 0.75) + " kr.";
                }
                else if (pris == 2)
                {
-                  type = "Passiv";
+                  type = "Passiv\t\t";
+                  priser[i] = type + ": " + scanner.nextLine() + " kr.";
                }
                else
                {
                   type = "Ukendt pris";
+                  priser[i] = type + ": " + scanner.nextLine() + " kr.";
                }
                
-               priser[i] = type + ": " + scanner.nextLine() + " kr.";
-               
                i++;
-            }
+            } 
          }
 
       }
@@ -153,7 +161,19 @@ public final class Filhaandtering
 	}
 
 	public static void gemNytMedlem(Medlem medlem, String cpr)
-   {	
+   {
+      if(tjekSortListe(medlem.getFornavn(), medlem.getEfternavn(), medlem.getKontakt().getTelefonnummer()))
+      {
+         System.out.println("Medlemmet står allerede i den sorte liste. Brugeren blev ikke oprettet.");
+         return;
+      }
+      
+      if(tjekMedlemsListe(medlem.getFornavn(), medlem.getEfternavn(), medlem.getKontakt().getTelefonnummer()))
+      {
+         System.out.println("Brugeren blev ikke oprettet.");
+         return;
+      }
+      	
       try
       {
          File file = new File(medlemsFilnavn);
@@ -215,6 +235,7 @@ public final class Filhaandtering
          //læs gamle medlemmer i ny liste
          ArrayList<String> nyListe = new ArrayList<String>();
          Scanner scanner = new Scanner(file, "UTF-8");
+         String dummy = scanner.nextLine();
          int m_nummer;
          while (scanner.hasNextLine())
          {
@@ -242,19 +263,22 @@ public final class Filhaandtering
          
          if (file.canWrite())
          {
-            //clear filen
-            file.delete();
-            file.createNewFile();
-            
-            FileWriter writer = new FileWriter(file, true);
+            FileWriter writer = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             PrintWriter printWriter = new PrintWriter(bufferedWriter);
+            
+            printWriter.println(dummy);
             
             //skriv gamle medlemmer til filen
             for (String s : nyListe)
             {
                printWriter.println(s);
             }
+            
+            printWriter.flush();
+            printWriter.close();
+            
+            System.out.println("Medlemsoplysningerne blev gemt.\n");
          }
          else
          {
@@ -301,6 +325,42 @@ public final class Filhaandtering
       
       return false;
 	}
+   
+   public static boolean tjekMedlemsListe(String fornavn, String efternavn, String telefonnummer)
+	{
+      try
+      {
+         File file = new File(medlemsFilnavn);
+         
+         if (!file.canRead())
+         {
+            System.out.println("Filen kunne ikke laeses. Oplysningerne blev ikke gemt i systemet.");
+            return false;
+         }
+         
+         //læs hvert linje i filen
+         Scanner scanner = new Scanner(file);
+         String[] line;
+         while (scanner.hasNextLine())
+         {
+            //tjek hvert linje om den stemmer overens med medlemsoplysningerne
+            line = scanner.nextLine().split("\t");
+            if (line[2].equals(fornavn) && line[3].equals(efternavn) && line[11].equals(telefonnummer))
+            {
+               System.out.println("Medlemmet findes allerede:\nMedlemsnummer: " + line[0] + "\nFornavn: " + line[2] + "\nEfternavn: " + line[3]);
+               return true;
+            }
+         }
+      
+      }
+      catch (IOException e)
+      {
+         System.out.println(e);
+      }
+      
+      return false;
+	}
+
 
    public static void laesRestanceListe()
    {
@@ -311,6 +371,7 @@ public final class Filhaandtering
          if (!file.canRead())
          {
             System.out.println("Filen kunne ikke laeses. Vi kan ikke udprinte restanceListe.");
+            return;
          }
          
          Scanner scanner = new Scanner(file);
