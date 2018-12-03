@@ -1,6 +1,0 @@
-fornavn	efternavn	telefonnummer
-Kurt	Kurtsen	20903920
-Berit	Beritsen	30201920
-Jarl	Asgersen	44992030
-Sonja	Johnsen	19298329
-Asger	Jarlsen	99999999
