@@ -107,7 +107,7 @@ public class Medlemskab
          } 
          catch (Exception e)
          {
-            System.out.println("Noget gik galt. Prøv igen.");
+            System.out.println("Noget gik galt. Proev igen.");
          }
       }
       
