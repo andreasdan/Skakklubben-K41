@@ -206,7 +206,7 @@ public final class Filhaandtering
          
          if (!file.canRead())
          {
-            System.out.println("Filen kunne ikke læses. Oplysningerne blev ikke gemt i systemet.");
+            System.out.println("Filen kunne ikke laeses. Oplysningerne blev ikke gemt i systemet.");
             return;
          }
          
@@ -228,7 +228,7 @@ public final class Filhaandtering
             	medlem[kolonne] = nyInfo;
             	medlem[0] = Integer.toString(m_nummer);
 
-            	String opdateretMedlem = medlem[0]; //løsning på klassisk stakit problem
+            	String opdateretMedlem = medlem[0]; //loesning på klassisk stakit problem
             	for (int i = 1; i < medlem.length; i++)
             	{
             		opdateretMedlem += "\t" + medlem[i];
@@ -274,7 +274,7 @@ public final class Filhaandtering
          
          if (!file.canRead())
          {
-            System.out.println("Filen kunne ikke læses. Oplysningerne blev ikke gemt i systemet.");
+            System.out.println("Filen kunne ikke laeses. Oplysningerne blev ikke gemt i systemet.");
             return false;
          }
          
