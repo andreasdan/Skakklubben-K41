@@ -17,7 +17,7 @@ public class Medlemskab
 * To variabler: medlem og nytMedlemsnummer
 */
    private Medlem medlem;
-   private int nytMedlemsnummer = 0;
+   private int nytMedlemsnummer;
 
 /**
 * Konstruktoer uden parametre. I konstruktoeren faar variablen nytMedlemsnummer en vaerdi, som 
@@ -31,6 +31,7 @@ public class Medlemskab
    public Medlemskab()
    {
       this.nytMedlemsnummer = Filhaandtering.laesAntalMedlemmer();
+      System.out.println("medlemsnummre: " + nytMedlemsnummer);
    }
    
    //setter
@@ -82,7 +83,8 @@ public class Medlemskab
       Scanner input = new Scanner(System.in);
       Medlem medlem = new Medlem();
       
-      medlem.setMedlemsnummer(hentNytMedlemsnummer());
+      nytMedlemsnummer++;
+      medlem.setMedlemsnummer(nytMedlemsnummer);
       
       medlem.setOprettelsesdato(LocalDate.now());
       
@@ -265,19 +267,6 @@ public class Medlemskab
       System.out.println("2: Efternavn");
       System.out.println("3: Telefonnummer");
       System.out.println("0: Afslut");
-   }
-/**
-* Metoden hentNytMedlemsnummer(): tilfoejer 1 til nytMedlemsnummer. I konstruktoeren fik 
-* nytMedlemsnummer vaerdi, som modsvarer antallet af medlemmer paa medlemslisten. Det nye
-* medlem faar dermed et medlemsnummer, som er antallet af medlemmer + 1. Vi kalder paa 
-* metoden, naar vi opretter et nyt medlem.
-* @return int : metoden returnerer et nyt medlemsnummer
-*/  
-   
-   public int hentNytMedlemsnummer()
-   {
-      nytMedlemsnummer++;
-      return nytMedlemsnummer;
    }
 
 }

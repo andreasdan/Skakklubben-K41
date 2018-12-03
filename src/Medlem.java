@@ -185,9 +185,9 @@ public class Medlem
       
       String resultat =
       medlemsnummer + "\t"
+      + oprettelsesdato.toString() + "\t"
       + fornavn + "\t"
       + efternavn + "\t"
-      + oprettelsesdato.toString() + "\t"
       + kontakt.getGadenavn() + "\t"
       + kontakt.getPostnummer() + "\t"
       + kontakt.getHusnummer() + "\t"

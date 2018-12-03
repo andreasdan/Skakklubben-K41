@@ -11,6 +11,7 @@ public final class Filhaandtering
 
 	private Filhaandtering()
    {
+      
 	}
    
    public static String[] laesPriser()
@@ -82,12 +83,13 @@ public final class Filhaandtering
          else
          {
             Scanner scanner = new Scanner(file, "UTF-8");
+            //scanner.useDelimiter("\n");
             int antal = -1; //-1 fordi toplinjen tælles med som ikke skal læses (vi begynder med 1 for første medlem)
             String s;
             while (scanner.hasNextLine())
             {
-               antal++;
                s = scanner.nextLine();
+               antal++;
             }
             
             return antal;

@@ -1,0 +1,4 @@
+kontingentType	kontingentPris
+0	200
+1	600
+2	100
