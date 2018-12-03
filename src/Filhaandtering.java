@@ -112,7 +112,7 @@ public final class Filhaandtering
          
          if (!file.canRead())
          {
-            System.out.println("Filen kunne ikke læses. Kontingentinfo blev ikke oprettet.");
+            System.out.println("Filen kunne ikke laeses. Kontingentinfo blev ikke oprettet.");
          }
          else
          {
