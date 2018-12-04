@@ -45,6 +45,7 @@ public class Menu
             if (valg < 0 || valg > 2) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-2
             {
                 System.out.println("Vaelg et tal mellem 0-2");
+                valg = console.nextInt();
             }
 
 
@@ -69,6 +70,7 @@ public class Menu
                 if (valg1 < 0 || valg1 > 2) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-2
                 {
                     System.out.println("Vaelg et tal mellem 0-2");
+                    valg1 = console.nextInt();
                 }
 
                 if (valg1 == 0)
@@ -80,12 +82,12 @@ public class Menu
                 if (valg1 == 1)
                 {
                     System.out.println("Du har valgt at oprette et nyt medlem.");
-                    medlemskab.opretMedlem();
+                    medlemskab.gemMedlem();
                 }
 
                 if (valg1 == 2)
                 {
-                    System.out.println("Du har valgt at opdatere et medlems stamoplysninger.");
+                    System.out.println("Du har valgt at opdatere et medlems oplysninger.");
                     System.out.println("Skriv medlemsnummer:");
 
                     while (!console.hasNextInt())
@@ -115,6 +117,7 @@ public class Menu
                 if (valg2 < 0 || valg2 > 2) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-2
                 {
                     System.out.println("Vaelg et tal mellem 0-2");
+                    valg2 = console.nextInt();
                 }
 
                 if (valg2 == 0)
@@ -168,7 +171,7 @@ public class Menu
         System.out.println("Du har valgt medlemskab.");
         System.out.println("Hvad Oensker du at foretage dig?");
         System.out.println("1: Oprette et nyt medlem");
-        System.out.println("2: Opdatere stamoplysninger paa et eksisterende medlem");
+        System.out.println("2: Opdatere oplysninger paa et eksisterende medlem");
         System.out.println("0: Afslut");
 
     }

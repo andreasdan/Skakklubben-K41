@@ -80,7 +80,7 @@ public class Medlemskab
      * Til sidst bliver medlemmet gemt til filen ved at kalde paa metoden gemNytMedlem(medlem)
      * fra klassen Filhaandtering.
      */
-    public void opretMedlem()
+    public void gemMedlem()
     {
         Scanner input = new Scanner(System.in);
         Medlem medlem = new Medlem();
@@ -226,6 +226,7 @@ public class Medlemskab
             if (valg < 0 || valg > 4) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-4
             {
                 System.out.println("Vaelg et tal mellem 0-4");
+                valg = console.nextInt();
             }
 
             if (valg == 1)
@@ -251,6 +252,22 @@ public class Medlemskab
                 Filhaandtering.gemOpdateretMedlem(medlemsnummer, 11, nummer);
                 runProgram = false;
             }
+            
+            if (valg == 4)
+            {
+               boolean nummerIndtastet = false;
+               while (!nummerIndtastet)
+               {
+                  System.out.println("Skriv 0 for passiv eller 1 for aktiv");
+                  int nummer = console.nextInt();
+                  if (nummer == 0 || nummer == 1)
+                  {
+                     Filhaandtering.gemOpdateretMedlem(medlemsnummer, 14, Integer.toString(nummer));
+                     nummerIndtastet = true;
+                     runProgram = false;
+                  }
+               }
+            }
 
             if (valg == 0)
             {
@@ -271,6 +288,7 @@ public class Medlemskab
         System.out.println("1: Fornavn");
         System.out.println("2: Efternavn");
         System.out.println("3: Telefonnummer");
+        System.out.println("4: Sæt aktiv/passiv");
         System.out.println("0: Afslut");
     }
 
