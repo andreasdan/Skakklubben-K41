@@ -135,56 +135,6 @@ public final class Filhaandtering
     }
 
     /**
-     *
-     * @param medlemsnummer
-     * @return
-     */
-    public static KontingentInfo laesKontingentFil(int medlemsnummer)
-    {
-        KontingentInfo kontingent = new KontingentInfo();
-
-        try
-        {
-            File file = new File(medlemsFilnavn);
-
-            if (!file.canRead())
-            {
-                System.out.println("Filen kunne ikke laeses. Kontingentinfo blev ikke oprettet.");
-            } else
-            {
-                Scanner scanner = new Scanner(file, "UTF-8");
-                int m_nummer;
-                while (scanner.hasNextLine())
-                {
-                    m_nummer = scanner.nextInt();
-                    if (m_nummer == medlemsnummer)
-                    {
-                        String[] line = scanner.nextLine().split("\t");
-
-                        kontingent.setMedlemsnummer(medlemsnummer);
-                        kontingent.setKontingenttype(line[9]);
-
-                        //
-
-                        if (line[13].equals("0"))
-                        {
-                            kontingent.setHarBetalt(false);
-                        } else
-                        {
-                            kontingent.setHarBetalt(true);
-                        }
-                    }
-                }
-            }
-        } catch (IOException e)
-        {
-            System.out.println(e);
-        }
-
-        return kontingent;
-    }
-
-    /**
      * Denne medtode gemmer et nyt oprettet medlem i filerne
      *
      * @param medlem Medlemmsobjekt som indeholder oplysningerne til at skrive medlem til fil
