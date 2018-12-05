@@ -12,7 +12,7 @@ import java.util.*;
 public class Menu
 {
 
-    Scanner console = new Scanner(System.in);
+    private Scanner console;
 
     /**
      * Konstruktor til menu.
@@ -20,7 +20,9 @@ public class Menu
 
     public Menu()
     {
-
+      console = new Scanner(System.in);
+      console.useDelimiter("\n"); //seperer next() med ny linje
+      
     }
 
 
@@ -32,135 +34,117 @@ public class Menu
     {
         boolean runProgram = true;
 
+        System.out.println("Velkommen!");
+        System.out.println("Hvad oensker du at foretage dig?");
+
         while (runProgram)
         {
-            visHovedmenu();
-            while (!console.hasNextInt()) //i tilfaelde af at brugeren ikke skriver et tal
-            {
-                System.out.println("Vaelg et tal mellem 0-2");
-            }
-
-            int valg = console.nextInt();
-
-            if (valg < 0 || valg > 2) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-2
-            {
-                System.out.println("Vaelg et tal mellem 0-2");
-                valg = console.nextInt();
-            }
+            System.out.println("1: Medlemskab");
+            System.out.println("2: Kontingent");
+            System.out.println("0: Afslut");
+        
+            char valg = console.next().charAt(0);
+            String dummy = console.nextLine(); //læs enter indtasten
 
 
-            if (valg == 0)
+            if (valg == '0')
             {
                 System.out.println("Afslutter ...");
                 runProgram = false;
             }
-
-            if (valg == 1)
+            else if (valg == '1')
             {
                 Medlemskab medlemskab = new Medlemskab();
-
+                
+                boolean undermenuValg1 = true;
+                while (undermenuValg1)
+                {
                 visMedlemskabsMenu();
-                while (!console.hasNextInt()) //i tilfaelde af at brugeren ikke skriver et tal
-                {
-                    System.out.println("Vaelg et tal mellem 0-2");
-                }
 
-                int valg1 = console.nextInt();
+                char valg1 = console.next().charAt(0);
+                dummy = console.nextLine();
 
-                if (valg1 < 0 || valg1 > 2) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-2
-                {
-                    System.out.println("Vaelg et tal mellem 0-2");
-                    valg1 = console.nextInt();
-                }
-
-                if (valg1 == 0)
+                if (valg1 == '0')
                 {
                     System.out.println("Afslutter ...");
-                    runProgram = false;
+                    undermenuValg1 = false;
                 }
-
-                if (valg1 == 1)
+                else if (valg1 == '1')
                 {
                     System.out.println("Du har valgt at oprette et nyt medlem.");
                     medlemskab.gemMedlem();
                 }
-
-                if (valg1 == 2)
+                else if (valg1 == '2')
                 {
                     System.out.println("Du har valgt at opdatere et medlems oplysninger.");
                     System.out.println("Skriv medlemsnummer:");
-
-                    while (!console.hasNextInt())
+                    
+                    boolean harInt = false;
+                    while (!harInt)
                     {
-                        System.out.println("Skriv et tal");
+                        if (console.hasNextLine())
+                        {
+                           if (console.hasNextInt())
+                           {
+                           harInt = true;
+                           int nummer = console.nextInt();
+                           dummy = console.nextLine();
+                           medlemskab.opdatereMedlem(nummer);
+                          
+                           }
+                           else
+                        {
+                           System.out.println("Skriv medlemsnummer:");
+                           dummy = console.nextLine();
+                        }
+
+                        }
+          
                     }
 
-                    int nummer = console.nextInt();
-                    String dummy = console.nextLine();
-                    medlemskab.opdatereMedlem(nummer);
-
+                }
                 }
 
             }
-
-            if (valg == 2)
+            else if (valg == '2')
             {
-
+               boolean undermenuValg2 = true;
+               while (undermenuValg2)
+               {
                 visKontingenthaandteringMenu();
-                while (!console.hasNextInt()) //i tilfaelde af at brugeren ikke skriver et tal
-                {
-                    System.out.println("Vaelg et tal mellem 0-2");
-                }
 
-                int valg2 = console.nextInt();
+                char valg2 = console.next().charAt(0);
+                dummy = console.nextLine();
 
-                if (valg2 < 0 || valg2 > 2) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-2
-                {
-                    System.out.println("Vaelg et tal mellem 0-2");
-                    valg2 = console.nextInt();
-                }
-
-                if (valg2 == 0)
+                if (valg2 == '0')
                 {
                     System.out.println("Afslutter ...");
-                    runProgram = false;
+                    undermenuValg2 = false;
                 }
-
-                if (valg2 == 1)
+                else if (valg2 == '1')
                 {
                     String[] priser = Filhaandtering.laesPriser();
                     for (String pris : priser)
                     {
                         System.out.println(pris);
                     }
+                    undermenuValg2 = false;
                 }
-
-                if (valg2 == 2)
+                else if (valg2 == '2')
                 {
                     Filhaandtering.laesRestanceListe();
+                    undermenuValg2 = false;
                 }
-
+              }
 
             }
+
 
         }
 
 
     }
 
-    /**
-     * visHovedmenu printer teksten til hovedmenuen.
-     */
-
-    public void visHovedmenu()
-    {
-        System.out.println("Velkommen!");
-        System.out.println("Hvad oensker du at foretage dig?");
-        System.out.println("1: Medlemskab");
-        System.out.println("2: Kontingent");
-        System.out.println("0: Afslut");
-
-    }
 
     /**
      * visMedlemskabsmenu printer teksten til medlemskabsmenuen.

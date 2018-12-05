@@ -31,7 +31,6 @@ public class Medlemskab
     public Medlemskab()
     {
         this.nytMedlemsnummer = Filhaandtering.laesAntalMedlemmer();
-        System.out.println("medlemsnummre: " + nytMedlemsnummer);
     }
 
     //setter
@@ -114,8 +113,9 @@ public class Medlemskab
                 System.out.println("Datoen blev ikke indtastet korrekt. Proev igen.");
             }
         }
-
-        long alderIAAr = ChronoUnit.YEARS.between(medlem.getFoedselsdato(), LocalDate.now());
+        
+        //ChronoUnit returnere long
+        long alderIAAr = ChronoUnit.YEARS.between(medlem.getFoedselsdato(), LocalDate.now()); //sammenligner antal år mellem 2 datoer
         if (alderIAAr < 18)
         {
 
@@ -125,7 +125,7 @@ public class Medlemskab
         }
         else
         {
-            medlem.setCprNummer("\\N");
+            medlem.setCprNummer("\\N"); //\N gemmes ikke i cpr filen
         }
 
         System.out.println("Indtast 0 for hyggespiller eller 1 for turneringsspiller");
@@ -215,21 +215,21 @@ public class Medlemskab
         while (runProgram)
         {
             visOpdateringsmenu();
-            while (!console.hasNextInt()) //i tilfaelde af at brugeren ikke skriver et tal
+            /*while (!console.hasNextInt()) //i tilfaelde af at brugeren ikke skriver et tal
             {
                 System.out.println("Vaelg et tal mellem 0-4");
-            }
+            }*/
 
-            int valg = console.nextInt();
+            char valg = console.next().charAt(0);
             String dummy = console.nextLine();
 
-            if (valg < 0 || valg > 4) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-4
+            /*if (valg < 0 || valg > 4) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-4
             {
                 System.out.println("Vaelg et tal mellem 0-4");
                 valg = console.nextInt();
-            }
+            }*/
 
-            if (valg == 1)
+            if (valg == '1')
             {
                 System.out.println("Skriv nyt fornavn");
                 String fornavn = console.nextLine();
@@ -237,7 +237,7 @@ public class Medlemskab
                 runProgram = false;
             }
 
-            if (valg == 2)
+            if (valg == '2')
             {
                 System.out.println("Skriv nyt efternavn");
                 String efternavn = console.nextLine();
@@ -245,7 +245,7 @@ public class Medlemskab
                 runProgram = false;
             }
 
-            if (valg == 3)
+            if (valg == '3')
             {
                 System.out.println("Skriv nyt telefonnummer");
                 String nummer = console.nextLine();
@@ -253,23 +253,23 @@ public class Medlemskab
                 runProgram = false;
             }
             
-            if (valg == 4)
+            if (valg == '4')
             {
                boolean nummerIndtastet = false;
                while (!nummerIndtastet)
                {
                   System.out.println("Skriv 0 for passiv eller 1 for aktiv");
-                  int nummer = console.nextInt();
-                  if (nummer == 0 || nummer == 1)
+                  char nummer = console.next().charAt(0);
+                  if (nummer == '0' || nummer == '1')
                   {
-                     Filhaandtering.gemOpdateretMedlem(medlemsnummer, 14, Integer.toString(nummer));
+                     Filhaandtering.gemOpdateretMedlem(medlemsnummer, 14, Character.toString(nummer));
                      nummerIndtastet = true;
                      runProgram = false;
                   }
                }
             }
 
-            if (valg == 0)
+            if (valg == '0')
             {
                 System.out.println("Afslutter ...");
                 runProgram = false;

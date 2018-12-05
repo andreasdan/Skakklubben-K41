@@ -4,4 +4,5 @@ medlemsnummer	oprettelsesdato	fornavn	efternavn	gadenavn	postNummer	husnummer	by
 3	2016-12-01	Ulla	Hirsekolbe	Taarnet	2400	99	Taarnby	2004-04-05	0	fuglen@hotmail.com	30291029	0	1	1
 4	1989-07-09	Ove	Carlsen	Dronningevej	1870	2	Koebenhavn	1947-08-28	1	ovesen@ovesen.dk	20192030	1	0	1
 5	2018-12-03	Hans	Hansen	Lygten	2200	16	Koebenhavn	2006-05-04	0	kea@skakklub.com	32515232	0	0	0
-6	2018-12-03	Jens	Jensen	Lygten	2200	16	Koebenhavn	2010-04-03	0	email	34523452	0	0	1
+6	2018-12-03	Jens	Jensen	Lygten	2200	16	Koebenhavn	2010-04-03	0	email		0	0	1
+7	2018-12-05	Mette	Frederiksen	Borgen	1830	3	Kbh K	1965-03-12	1	socialismerules@mette.dk	43434343	1	0	0
