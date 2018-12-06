@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @since    07-12-2018
  */
 
-public final class Filhaandtering
+public class Filhaandtering
 {
     /**
      * Variabler som hvert indeholder filnavnet som skal tilgås
