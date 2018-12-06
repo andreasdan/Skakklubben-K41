@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"<Unnamed>","l":"Filhaandtering"},{"p":"<Unnamed>","l":"Kontaktoplysninger"},{"p":"<Unnamed>","l":"Medlem"},{"p":"<Unnamed>","l":"Medlemskab"},{"p":"<Unnamed>","l":"Menu"},{"p":"<Unnamed>","l":"SkakklubbenK41"}]

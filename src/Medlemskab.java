@@ -23,9 +23,6 @@ public class Medlemskab
      * Konstruktoer uden parametre. I konstruktoeren faar variablen nytMedlemsnummer en vaerdi, som
      * modsvarer antallet af medlemmer, som vi faar ved at kalde paa metoden laesAntalMedlemmer()
      * fra klassen Filhaandtering.
-     * Vi har i denne klasse ogsaa metoden hentNytMedlemsnummer(), som tilfoejer 1 til dette
-     * antal af medlemmer. Den kalder vi, naar vi opretter et nyt medlem, som dermed faar et nyt
-     * medlemsnummer.
      */
 
     public Medlemskab()

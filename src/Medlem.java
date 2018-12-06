@@ -167,8 +167,8 @@ public class Medlem
     {
         int kontingenttype;
 
-        long alderIÅr = ChronoUnit.YEARS.between(foedselsdato, LocalDate.now());
-        if (alderIÅr < 18)
+        long alderIAAr = ChronoUnit.YEARS.between(foedselsdato, LocalDate.now());
+        if (alderIAAr < 18)
         {
             kontingenttype = 0; //junior
         } else
