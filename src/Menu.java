@@ -72,6 +72,7 @@ public class Menu
                 else if (valg1 == '1')
                 {
                     System.out.println("Du har valgt at oprette et nyt medlem.");
+                    System.out.println("(Indtast '\\N' hvis programmet forespørger ukendt data)");
                     medlemskab.gemMedlem();
                 }
                 else if (valg1 == '2')
