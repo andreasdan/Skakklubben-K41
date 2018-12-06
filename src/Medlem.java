@@ -28,7 +28,7 @@ public class Medlem
     private Kontaktoplysninger kontakt;
 
     /**
-     * Konstruktoren indeholder en instans af Kontaktoplysninger
+     * Konstruktoren indeholder en metode der opretter en instans af Kontaktoplysninger (composition)
      */
 
     public Medlem()

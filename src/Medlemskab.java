@@ -215,19 +215,9 @@ public class Medlemskab
         while (runProgram)
         {
             visOpdateringsmenu();
-            /*while (!console.hasNextInt()) //i tilfaelde af at brugeren ikke skriver et tal
-            {
-                System.out.println("Vaelg et tal mellem 0-4");
-            }*/
 
             char valg = console.next().charAt(0);
             String dummy = console.nextLine();
-
-            /*if (valg < 0 || valg > 4) //i tilfaelde af at brugeren ikke vaelger et tal mellem 0-4
-            {
-                System.out.println("Vaelg et tal mellem 0-4");
-                valg = console.nextInt();
-            }*/
 
             if (valg == '1')
             {

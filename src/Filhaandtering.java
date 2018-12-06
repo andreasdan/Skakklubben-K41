@@ -27,7 +27,7 @@ public class Filhaandtering
 
     /**
      * Metode som læser kontingenttyper og priser fra kontingent fil
-     * Der tilføjes automatisk en senoir60+ som har givet 25% til den almindelige senior pris
+     * Der tilføjes automatisk en senior60+ som har givet 25% til den almindelige senior pris
      *
      * @return String[] liste af kontingenttype med tilhørende priser klar til udprint.
      */
