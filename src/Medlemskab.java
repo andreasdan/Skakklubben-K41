@@ -71,7 +71,7 @@ public class Medlemskab
     }
 
     /**
-     * Metoden opretMedlem(): opretter et nyt medlem ved at lave instans af Medlem og give objektet
+     * Metoden gemMedlem(): opretter et nyt medlem ved at lave instans af Medlem og give objektet
      * nye vaerdier ved hjaelp af set-metoder. Medlemsoplysninger faar vi via skanneren fra keyboard.
      * Til sidst bliver medlemmet gemt til filen ved at kalde paa metoden gemNytMedlem(medlem)
      * fra klassen Filhaandtering.
@@ -100,7 +100,7 @@ public class Medlemskab
         {
             try
             {
-                System.out.println("Indtast foedselsdato (åååå-mm-dd):");
+                System.out.println("Indtast foedselsdato (aaaa-mm-dd):");
                 String fdato = input.nextLine();
                 medlem.setFoedselsdato(LocalDate.parse(fdato));
                 foedselsdatoKorrekt = true;
