@@ -70,6 +70,7 @@ public class Menu
                         System.out.println("Du har valgt at oprette et nyt medlem.");
                         System.out.println("(Indtast '\\N' hvis programmet forespørger ukendt data)");
                         medlemskab.gemMedlem();
+                        undermenuValg1 = false;
                     } else if (valg1 == '2')
                     {
                         System.out.println("Du har valgt at opdatere et medlems oplysninger.");
@@ -84,6 +85,7 @@ public class Menu
                         int nummer = console.nextInt();
                         dummy = console.nextLine();
                         medlemskab.opdatereMedlem(nummer);
+                        undermenuValg1 = false;
                     }
 
 
